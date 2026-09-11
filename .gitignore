@@ -1,0 +1,50 @@
+# --- Secrets / local environment (NEVER commit) ---
+.env
+*.env.local
+
+# --- Java / Maven ---
+api/target/
+*.class
+
+# --- Node / React / Vite ---
+node_modules/
+console/dist/
+dist/
+build/
+
+# --- Expo / React Native / Metro ---
+.expo/
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+.metro-health-check*
+*.keystore
+*.jks
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+env/
+.Python
+
+# --- ML caches & artifacts (belong outside the repo; never commit) ---
+.cache/
+**/huggingface/
+**/hf_cache/
+**/transformers_cache/
+*.safetensors
+*.faiss
+*.index
+faiss_index/
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.iml
+
+# --- OS ---
+Thumbs.db
+.DS_Store
