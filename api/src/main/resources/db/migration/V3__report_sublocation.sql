@@ -1,0 +1,12 @@
+-- Adds free-text sublocation to reports.
+--
+-- The structured `location_id` is picked from the seeded registry — it carries
+-- population and criticality and acts as a HARD clustering signal (near-miss pairs at
+-- different registry locations must not merge). `sublocation` is the finer detail a
+-- student types inside that location ("Room 210", "2nd sink from the left").
+--
+-- Kept as its own column, deliberately: sublocation is descriptive text, NOT a
+-- registry entity, so it never feeds location criticality or population, and it never
+-- silently creates a new scored location. It can inform clustering later as a soft
+-- signal, but it carries no scoring weight of its own.
+ALTER TABLE reports ADD COLUMN sublocation TEXT;
