@@ -1,0 +1,3810 @@
+{
+  "meta": {
+    "generator": "generate_campus_reports.py",
+    "seed": 42,
+    "seed_batch": "seed-2026-09-demo-v1",
+    "generated_at": "2026-09-09T07:44:22.623015+00:00",
+    "counts": {
+      "faults": 22,
+      "occurrences": 59,
+      "reports": 332,
+      "singletons": 4,
+      "near_miss_pairs": 5
+    },
+    "structures": {
+      "near_miss_pairs": [
+        [
+          "fan_room305",
+          "hostelB_fan_r210"
+        ],
+        [
+          "washroom_hostelA_clog",
+          "washroom_hostelB_clog"
+        ],
+        [
+          "wifi_hostelB",
+          "wifi_hostelD"
+        ]
+      ],
+      "singleton_keys": [
+        "broken_window_lib",
+        "fan_room305",
+        "gasleak_canteen",
+        "pothole_mainroad"
+      ]
+    }
+  },
+  "reference": {
+    "departments": [
+      {
+        "name": "Electrical Maintenance",
+        "sla_hours": 24
+      },
+      {
+        "name": "Water & Plumbing",
+        "sla_hours": 24
+      },
+      {
+        "name": "Housekeeping",
+        "sla_hours": 12
+      },
+      {
+        "name": "IT & Network",
+        "sla_hours": 48
+      },
+      {
+        "name": "Civil Maintenance",
+        "sla_hours": 72
+      },
+      {
+        "name": "Security",
+        "sla_hours": 6
+      }
+    ],
+    "categories": [
+      {
+        "key": "ELECTRICAL",
+        "label": "Electrical",
+        "severity_weight": 0.8,
+        "safety_flag": true,
+        "default_department": "Electrical Maintenance"
+      },
+      {
+        "key": "WATER",
+        "label": "Water supply",
+        "severity_weight": 0.55,
+        "safety_flag": false,
+        "default_department": "Water & Plumbing"
+      },
+      {
+        "key": "SANITATION",
+        "label": "Sanitation",
+        "severity_weight": 0.7,
+        "safety_flag": true,
+        "default_department": "Housekeeping"
+      },
+      {
+        "key": "INTERNET",
+        "label": "Internet / WiFi",
+        "severity_weight": 0.4,
+        "safety_flag": false,
+        "default_department": "IT & Network"
+      },
+      {
+        "key": "FURNITURE",
+        "label": "Furniture",
+        "severity_weight": 0.3,
+        "safety_flag": false,
+        "default_department": "Civil Maintenance"
+      },
+      {
+        "key": "CIVIL",
+        "label": "Civil / structural",
+        "severity_weight": 0.6,
+        "safety_flag": false,
+        "default_department": "Civil Maintenance"
+      },
+      {
+        "key": "SECURITY",
+        "label": "Security",
+        "severity_weight": 0.85,
+        "safety_flag": true,
+        "default_department": "Security"
+      },
+      {
+        "key": "EQUIPMENT",
+        "label": "Lab / AV equipment",
+        "severity_weight": 0.45,
+        "safety_flag": false,
+        "default_department": "IT & Network"
+      }
+    ],
+    "locations": [
+      {
+        "name": "Hostel A Block",
+        "type": "HOSTEL",
+        "population": 300,
+        "criticality_weight": 1.3
+      },
+      {
+        "name": "Hostel B Block",
+        "type": "HOSTEL",
+        "population": 320,
+        "criticality_weight": 1.3
+      },
+      {
+        "name": "Hostel C Block",
+        "type": "HOSTEL",
+        "population": 280,
+        "criticality_weight": 1.3
+      },
+      {
+        "name": "Hostel D Block",
+        "type": "HOSTEL",
+        "population": 260,
+        "criticality_weight": 1.3
+      },
+      {
+        "name": "Lab Wing 2F",
+        "type": "LAB",
+        "population": 120,
+        "criticality_weight": 1.5
+      },
+      {
+        "name": "Lab 1",
+        "type": "LAB",
+        "population": 60,
+        "criticality_weight": 1.5
+      },
+      {
+        "name": "Academic Block Corridor",
+        "type": "CORRIDOR",
+        "population": 500,
+        "criticality_weight": 1.1
+      },
+      {
+        "name": "Lecture Hall 1",
+        "type": "CLASSROOM",
+        "population": 150,
+        "criticality_weight": 1.2
+      },
+      {
+        "name": "Library",
+        "type": "LIBRARY",
+        "population": 200,
+        "criticality_weight": 1.4
+      },
+      {
+        "name": "Central Canteen",
+        "type": "CANTEEN",
+        "population": 400,
+        "criticality_weight": 1.2
+      },
+      {
+        "name": "Sports Ground",
+        "type": "GROUNDS",
+        "population": 150,
+        "criticality_weight": 0.9
+      },
+      {
+        "name": "Parking Lot",
+        "type": "GROUNDS",
+        "population": 100,
+        "criticality_weight": 1.0
+      },
+      {
+        "name": "Main Road",
+        "type": "OTHER",
+        "population": 200,
+        "criticality_weight": 1.0
+      },
+      {
+        "name": "Back Gate",
+        "type": "OTHER",
+        "population": 120,
+        "criticality_weight": 1.1
+      },
+      {
+        "name": "Men's Washroom Hostel A",
+        "type": "WASHROOM",
+        "population": 300,
+        "criticality_weight": 1.2
+      },
+      {
+        "name": "Men's Washroom Hostel B",
+        "type": "WASHROOM",
+        "population": 320,
+        "criticality_weight": 1.2
+      },
+      {
+        "name": "Room 210 Hostel B",
+        "type": "HOSTEL",
+        "population": 4,
+        "criticality_weight": 1.0
+      },
+      {
+        "name": "Room 305 Hostel B",
+        "type": "HOSTEL",
+        "population": 4,
+        "criticality_weight": 1.0
+      },
+      {
+        "name": "Admin Office",
+        "type": "OFFICE",
+        "population": 40,
+        "criticality_weight": 1.1
+      }
+    ],
+    "students": [
+      {
+        "email": "student01@campus.edu",
+        "display_name": "Student 01"
+      },
+      {
+        "email": "student02@campus.edu",
+        "display_name": "Student 02"
+      },
+      {
+        "email": "student03@campus.edu",
+        "display_name": "Student 03"
+      },
+      {
+        "email": "student04@campus.edu",
+        "display_name": "Student 04"
+      },
+      {
+        "email": "student05@campus.edu",
+        "display_name": "Student 05"
+      },
+      {
+        "email": "student06@campus.edu",
+        "display_name": "Student 06"
+      },
+      {
+        "email": "student07@campus.edu",
+        "display_name": "Student 07"
+      },
+      {
+        "email": "student08@campus.edu",
+        "display_name": "Student 08"
+      },
+      {
+        "email": "student09@campus.edu",
+        "display_name": "Student 09"
+      },
+      {
+        "email": "student10@campus.edu",
+        "display_name": "Student 10"
+      },
+      {
+        "email": "student11@campus.edu",
+        "display_name": "Student 11"
+      },
+      {
+        "email": "student12@campus.edu",
+        "display_name": "Student 12"
+      },
+      {
+        "email": "student13@campus.edu",
+        "display_name": "Student 13"
+      },
+      {
+        "email": "student14@campus.edu",
+        "display_name": "Student 14"
+      },
+      {
+        "email": "student15@campus.edu",
+        "display_name": "Student 15"
+      },
+      {
+        "email": "student16@campus.edu",
+        "display_name": "Student 16"
+      },
+      {
+        "email": "student17@campus.edu",
+        "display_name": "Student 17"
+      },
+      {
+        "email": "student18@campus.edu",
+        "display_name": "Student 18"
+      },
+      {
+        "email": "student19@campus.edu",
+        "display_name": "Student 19"
+      },
+      {
+        "email": "student20@campus.edu",
+        "display_name": "Student 20"
+      },
+      {
+        "email": "student21@campus.edu",
+        "display_name": "Student 21"
+      },
+      {
+        "email": "student22@campus.edu",
+        "display_name": "Student 22"
+      },
+      {
+        "email": "student23@campus.edu",
+        "display_name": "Student 23"
+      },
+      {
+        "email": "student24@campus.edu",
+        "display_name": "Student 24"
+      },
+      {
+        "email": "student25@campus.edu",
+        "display_name": "Student 25"
+      },
+      {
+        "email": "student26@campus.edu",
+        "display_name": "Student 26"
+      },
+      {
+        "email": "student27@campus.edu",
+        "display_name": "Student 27"
+      },
+      {
+        "email": "student28@campus.edu",
+        "display_name": "Student 28"
+      },
+      {
+        "email": "student29@campus.edu",
+        "display_name": "Student 29"
+      },
+      {
+        "email": "student30@campus.edu",
+        "display_name": "Student 30"
+      },
+      {
+        "email": "student31@campus.edu",
+        "display_name": "Student 31"
+      },
+      {
+        "email": "student32@campus.edu",
+        "display_name": "Student 32"
+      },
+      {
+        "email": "student33@campus.edu",
+        "display_name": "Student 33"
+      },
+      {
+        "email": "student34@campus.edu",
+        "display_name": "Student 34"
+      },
+      {
+        "email": "student35@campus.edu",
+        "display_name": "Student 35"
+      },
+      {
+        "email": "student36@campus.edu",
+        "display_name": "Student 36"
+      },
+      {
+        "email": "student37@campus.edu",
+        "display_name": "Student 37"
+      },
+      {
+        "email": "student38@campus.edu",
+        "display_name": "Student 38"
+      },
+      {
+        "email": "student39@campus.edu",
+        "display_name": "Student 39"
+      },
+      {
+        "email": "student40@campus.edu",
+        "display_name": "Student 40"
+      }
+    ],
+    "department_users": [
+      {
+        "email": "elec@campus.edu",
+        "display_name": "Electrical Desk",
+        "department": "Electrical Maintenance"
+      },
+      {
+        "email": "water@campus.edu",
+        "display_name": "Plumbing Desk",
+        "department": "Water & Plumbing"
+      },
+      {
+        "email": "house@campus.edu",
+        "display_name": "Housekeeping Desk",
+        "department": "Housekeeping"
+      },
+      {
+        "email": "it@campus.edu",
+        "display_name": "IT Desk",
+        "department": "IT & Network"
+      },
+      {
+        "email": "civil@campus.edu",
+        "display_name": "Civil Desk",
+        "department": "Civil Maintenance"
+      },
+      {
+        "email": "security@campus.edu",
+        "display_name": "Security Desk",
+        "department": "Security"
+      }
+    ],
+    "admins": [
+      {
+        "email": "admin@campus.edu",
+        "display_name": "Campus Admin"
+      }
+    ],
+    "scoring_weights": {
+      "version_label": "v1-demo",
+      "w_severity": 0.3,
+      "w_people": 0.2,
+      "w_recurrence": 0.15,
+      "w_age_sla": 0.2,
+      "w_location": 0.15,
+      "norm_params": {
+        "people": {
+          "cluster_cap": 10,
+          "population_cap": 500
+        },
+        "recurrence": {
+          "cap": 5
+        },
+        "age_sla": {
+          "cap_ratio": 3.0
+        },
+        "location": {
+          "max_weight": 1.5
+        }
+      }
+    },
+    "routing_rules": [
+      {
+        "rule_order": 10,
+        "match_category": null,
+        "match_location_type": null,
+        "match_keyword": "gas",
+        "target_department": "Security",
+        "active": true
+      },
+      {
+        "rule_order": 20,
+        "match_category": "SANITATION",
+        "match_location_type": "GROUNDS",
+        "match_keyword": null,
+        "target_department": "Civil Maintenance",
+        "active": true
+      },
+      {
+        "rule_order": 30,
+        "match_category": "EQUIPMENT",
+        "match_location_type": "CLASSROOM",
+        "match_keyword": null,
+        "target_department": "IT & Network",
+        "active": true
+      }
+    ]
+  },
+  "reports": [
+    {
+      "text": "FYI - lab 2F ka water cooler kharab hai, pani garam aa raha Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-06-05T22:42:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Internet down in Hostel B, cannot attend online class",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-04-06T03:17:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: Washroom in A block flooded, please clean urgently Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-05-19T16:40:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - Hostel A bathroom is clogged and smelling badly It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-31T05:07:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "urgent: large pothole on the main road near the gate, risky for two-wheelers please fix soon.",
+      "category_key": "CIVIL",
+      "location_name": "Main Road",
+      "reporter_email": "student38@campus.edu",
+      "created_at": "2026-09-01T20:44:00+00:00",
+      "fault_key": "pothole_mainroad",
+      "occurrence_id": "pothole_mainroad#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "WiFi is not working in B block since morning It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-06-20T16:52:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#4",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Ground lights are off, cannot play in the evening Please fix soon.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student06@campus.edu",
+      "created_at": "2026-08-31T00:36:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, acad block corridor ki light kharab hai",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-09-07T03:25:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#4",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "FYI - room 210 ka fan nahi chal raha",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 210 Hostel B",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-07-20T23:03:00+00:00",
+      "fault_key": "hostelB_fan_r210",
+      "occurrence_id": "hostelB_fan_r210#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hostel A bathroom is clogged and smelling badly Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-06-15T00:34:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "please note: tubelight fused in the main corridor, very dark",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-07-21T16:34:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: hostel B washroom me pani bhara hua hai, toilet band hai",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-08-29T00:58:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: acad block corridor ki light kharab hai It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student01@campus.edu",
+      "created_at": "2026-09-06T05:07:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#4",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: WiFi is not working in B block since morning It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student28@campus.edu",
+      "created_at": "2026-07-28T00:12:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Floodlights not working on the sports ground",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-08-01T11:18:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "FYI - lab 2F ka water cooler kharab hai, pani garam aa raha Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-08-14T17:19:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: Hostel B bathroom is clogged and smelling badly",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-08-28T03:45:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Hi, hostel A washroom me pani bhara hua hai, toilet band hai",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-08-05T02:56:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - back gate pe pani jama hai, machar bahut ho gaye",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-06-24T17:42:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, Dirty water logged at back gate for days, dengue risk Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-07-23T05:49:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "FYI - water logging near back gate, please drain it",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-06-24T17:38:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, Hostel A bathroom is clogged and smelling badly",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-08-05T14:36:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: No drinking water from the cooler in lab wing",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student24@campus.edu",
+      "created_at": "2026-06-06T01:08:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Computers in Lab 1 keep crashing during practical",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-08-29T07:22:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: No water supply in Hostel C since last night Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-06-02T02:49:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: lab 2F ka water cooler kharab hai, pani garam aa raha Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-07-21T10:07:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "wifi is not working in b block since morning",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student15@campus.edu",
+      "created_at": "2026-02-26T22:27:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Fan not working in room 210 Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 210 Hostel B",
+      "reporter_email": "student40@campus.edu",
+      "created_at": "2026-06-17T00:45:00+00:00",
+      "fault_key": "hostelB_fan_r210",
+      "occurrence_id": "hostelB_fan_r210#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "WiFi is not working in B block since morning It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-09-04T05:03:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, food area dirty, dustbins overflowing in canteen Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-08-16T12:18:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: Hostel A bathroom is clogged and smelling badly",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-05-19T09:44:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: The projector display is blank in hall 1",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-07-29T18:57:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - library ka AC theek se nahi chal raha, garmi bahut hai",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-07-18T00:14:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: No drinking water from the cooler in lab wing It's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-08-14T21:19:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - canteen me safai nahi hoti, ganda rehta hai Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-07-05T12:08:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: WiFi is not working in B block since morning It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-05-13T01:32:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: Internet down in Hostel B, cannot attend online class Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student14@campus.edu",
+      "created_at": "2026-04-04T11:51:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, Several PCs in Lab 1 are not turning on",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-08-29T13:58:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: Water cooler on Lab Wing 2nd floor not giving cold water",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-09-06T12:14:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "water supply band hai hostel C, bahut problem Thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-07-22T01:42:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Academic block corridor is completely dark at night Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student38@campus.edu",
+      "created_at": "2026-06-29T18:24:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: hall 1 ka projector on nahi ho raha Thanks.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-07-29T22:11:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "hi, water cooler on lab wing 2nd floor not giving cold water",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student14@campus.edu",
+      "created_at": "2026-06-06T14:39:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: Water cooler on Lab Wing 2nd floor not giving cold water Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-07-21T20:47:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: The RO water cooler near lab 2F is not working It's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-06-30T03:06:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Geyser not working in A block, only cold water Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-08-03T01:02:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "hostel A me garam pani nahi aa raha, geyser kharab Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-03T06:08:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Geyser not working in A block, only cold water Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-08-02T11:40:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: The RO water cooler near lab 2F is not working",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student14@campus.edu",
+      "created_at": "2026-06-28T11:19:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: sports ground ki light band hai shaam ko Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student40@campus.edu",
+      "created_at": "2026-08-31T00:45:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "tubelight fused in the main corridor, very dark Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-06-28T16:52:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, Washroom in A block flooded, please clean urgently It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-08-05T08:30:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: lab 1 ke computer on nahi ho rahe",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-07-30T23:21:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: gandagi bahut hai A block bathroom, jam ho gaya Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-08-05T05:11:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: The projector display is blank in hall 1 Please fix soon.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-07-30T04:33:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, gandagi bahut hai A block bathroom, jam ho gaya Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-06-15T03:07:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: No water supply in Hostel C since last night",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-07-23T00:04:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: Stagnant water collecting near the back gate, mosquito breeding It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-08-19T02:30:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#3",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Please note: Washroom in A block flooded, please clean urgently",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-08-31T03:44:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - hostel B ka internet band hai please dekho Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student23@campus.edu",
+      "created_at": "2026-04-05T02:29:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: No drinking water from the cooler in lab wing Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-06-28T18:59:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: AC not cooling in the library reading hall Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-08-11T05:23:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: hall 1 ka projector on nahi ho raha",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-09-05T22:09:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "no drinking water from the cooler in lab wing thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-09-06T00:58:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Geyser not working in A block, only cold water",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-09-07T06:11:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: No hot water in Hostel A geyser in the morning It's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-08-03T05:59:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "No water supply in Hostel C since last night Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-08-17T01:41:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Canteen tables are dirty and not cleaned Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-08-17T18:13:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "urgent: water wastage from a broken tap in d block it's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-07-16T14:13:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: wifi keeps disconnecting in hostel B Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-05-13T17:38:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: Hostel C has no running water in bathrooms Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-06-26T13:30:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: water supply band hai hostel C, bahut problem Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-06-27T14:59:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Water cooler on Lab Wing 2nd floor not giving cold water",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student06@campus.edu",
+      "created_at": "2026-08-14T03:32:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: reading room AC stopped working again It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-08-11T02:06:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, canteen me safai nahi hoti, ganda rehta hai Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-07-27T09:38:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Hi, lab 2F ka water cooler kharab hai, pani garam aa raha Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-07-22T07:41:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hostel C has no running water in bathrooms",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-07-21T14:27:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: AC not cooling in the library reading hall Please fix soon.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-09-03T02:54:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: Toilet blocked in Hostel B washroom, water everywhere Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student14@campus.edu",
+      "created_at": "2026-07-22T10:28:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - B block me wifi nahi chal raha It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-09-04T12:44:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - Canteen tables are dirty and not cleaned",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-07-27T12:06:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "hi, library air conditioning is not working, too hot to study please fix soon.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-09-02T17:50:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, Dirty water logged at back gate for days, dengue risk Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-07-22T08:43:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "FYI - A window pane is broken in the library, glass on the floor It's been days.",
+      "category_key": "CIVIL",
+      "location_name": "Library",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-08-26T16:36:00+00:00",
+      "fault_key": "broken_window_lib",
+      "occurrence_id": "broken_window_lib#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Please note: Washroom in A block flooded, please clean urgently Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-05-18T23:31:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "B block me wifi nahi chal raha Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-09-04T14:15:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: cooler pe pani nahi aa raha 2nd floor lab Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student15@campus.edu",
+      "created_at": "2026-07-21T23:12:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Floodlights not working on the sports ground",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-08-30T12:15:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, Several desks damaged in lecture hall 1 Kindly resolve.",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-07-31T13:13:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, hostel B ka internet band hai please dekho",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-06-19T22:59:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#4",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "cooler pe pani nahi aa raha 2nd floor lab Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student13@campus.edu",
+      "created_at": "2026-07-22T23:32:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "library ka ac theek se nahi chal raha, garmi bahut hai please fix soon.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-07-18T02:26:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "half the systems in lab 1 not booting Kindly resolve.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-08-29T13:02:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "D block me wifi nahi chal raha Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-08-25T04:39:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - water logging near back gate, please drain it Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student40@campus.edu",
+      "created_at": "2026-07-22T08:43:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, Stagnant water collecting near the back gate, mosquito breeding Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-06-26T03:21:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "hi, corridor lights not working in academic block kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-06-28T18:09:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "wifi is not working in b block since morning thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-04-05T14:34:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, Internet down in Hostel D, cannot attend online class Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-08-23T13:24:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "urgent: hostel a bathroom is clogged and smelling badly it's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-05-19T02:21:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: AC not cooling in the library reading hall",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-08-10T10:17:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "hi, library air conditioning is not working, too hot to study",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-09-04T02:40:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "FYI - No security guard at the parking lot, bikes unsafe Please fix soon.",
+      "category_key": "SECURITY",
+      "location_name": "Parking Lot",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-08-17T16:01:00+00:00",
+      "fault_key": "parking_security",
+      "occurrence_id": "parking_security#2",
+      "department_true": "Security"
+    },
+    {
+      "text": "Urgent: Internet down in Hostel D, cannot attend online class",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-07-20T17:56:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, B block me wifi nahi chal raha Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-04-06T01:44:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - Canteen tables are dirty and not cleaned",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-17T23:59:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: wifi keeps disconnecting in hostel B Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-06-20T15:35:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#4",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: canteen me safai nahi hoti, ganda rehta hai Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-18T05:48:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Fan not working in room 305 Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 305 Hostel B",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-09-03T03:45:00+00:00",
+      "fault_key": "fan_room305",
+      "occurrence_id": "fan_room305#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: parking me koi guard nahi hai, suraksha ka issue Kindly resolve.",
+      "category_key": "SECURITY",
+      "location_name": "Parking Lot",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-08-17T18:43:00+00:00",
+      "fault_key": "parking_security",
+      "occurrence_id": "parking_security#2",
+      "department_true": "Security"
+    },
+    {
+      "text": "Complaint: Floodlights not working on the sports ground It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-08-30T16:53:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "The RO water cooler near lab 2F is not working",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-06-06T01:07:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: cooler pe pani nahi aa raha 2nd floor lab",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-09-06T20:28:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, back gate pe pani jama hai, machar bahut ho gaye Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-07-22T13:14:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, Tap continuously leaking in Hostel D washroom Thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-08-18T03:24:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Water wastage from a broken tap in D block",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-07-16T14:04:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: hostel A me garam pani nahi aa raha, geyser kharab",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-08-03T14:44:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "food area dirty, dustbins overflowing in canteen Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-07-27T11:46:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Toilet blocked in Hostel A washroom, water everywhere Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-08-05T18:12:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "B block me wifi nahi chal raha Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student06@campus.edu",
+      "created_at": "2026-06-20T04:15:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#4",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "wifi keeps disconnecting in hostel B",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-07-29T02:41:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: hostel B washroom me pani bhara hua hai, toilet band hai Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student15@campus.edu",
+      "created_at": "2026-08-28T15:12:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "hostel A me garam pani nahi aa raha, geyser kharab",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-09-07T03:20:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: The RO water cooler near lab 2F is not working It's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student28@campus.edu",
+      "created_at": "2026-06-29T19:02:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: WiFi is not working in B block since morning",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-07-27T11:55:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: library ka AC theek se nahi chal raha, garmi bahut hai It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student23@campus.edu",
+      "created_at": "2026-08-09T15:43:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Washroom in A block flooded, please clean urgently Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-07-11T02:21:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: Water wastage from a broken tap in D block Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-07-17T02:19:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - No water supply in Hostel C since last night It's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-06-27T06:54:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, Broken benches in Lecture Hall 1, unsafe to sit Kindly resolve.",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-09-04T08:35:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Please note: cooler pe pani nahi aa raha 2nd floor lab It's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-08-14T13:43:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Geyser not working in A block, only cold water Thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-09-07T13:38:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Toilet blocked in Hostel B washroom, water everywhere It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-07-24T04:15:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Broken benches in Lecture Hall 1, unsafe to sit",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-09-05T00:56:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, wifi keeps disconnecting in hostel B Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-07-28T16:13:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "fyi - hostel a bathroom is clogged and smelling badly",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-07-10T23:38:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Hostel B bathroom is clogged and smelling badly Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-07-23T06:43:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: room 210 ka fan nahi chal raha Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 210 Hostel B",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-08-23T04:24:00+00:00",
+      "fault_key": "hostelB_fan_r210",
+      "occurrence_id": "hostelB_fan_r210#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "FYI - No security guard at the parking lot, bikes unsafe Kindly resolve.",
+      "category_key": "SECURITY",
+      "location_name": "Parking Lot",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-07-22T13:15:00+00:00",
+      "fault_key": "parking_security",
+      "occurrence_id": "parking_security#1",
+      "department_true": "Security"
+    },
+    {
+      "text": "urgent: water supply band hai hostel c, bahut problem",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-07-21T19:44:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: Hostel C has no running water in bathrooms",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-06-27T17:37:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "the projector display is blank in hall 1",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-09-05T21:02:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, lab 1 ke computer on nahi ho rahe Thanks.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-07-03T04:43:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "hostel a washroom me pani bhara hua hai, toilet band hai thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-06-14T11:16:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "lab 1 ke computer on nahi ho rahe Kindly resolve.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student40@campus.edu",
+      "created_at": "2026-07-30T16:25:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - Toilet blocked in Hostel A washroom, water everywhere",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-06-14T07:14:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "complaint: computers in lab 1 keep crashing during practical it's been days.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-07-31T12:37:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, hostel A washroom me pani bhara hua hai, toilet band hai Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student38@campus.edu",
+      "created_at": "2026-08-06T00:51:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "lab 1 ke computer on nahi ho rahe Kindly resolve.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-08-29T02:37:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - No drinking water from the cooler in lab wing It's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-06-05T14:26:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, Washroom in A block flooded, please clean urgently Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-07-09T11:22:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: No drinking water from the cooler in lab wing",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-13T17:12:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: WiFi is not working in B block since morning",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-04-06T03:14:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - lab 1 ke computer on nahi ho rahe",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-07-30T13:25:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "No connectivity in B block wifi again",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-05-13T16:05:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "hi, canteen tables are dirty and not cleaned please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-07-26T14:20:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: tubelight fused in the main corridor, very dark Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student38@campus.edu",
+      "created_at": "2026-08-14T18:41:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, wifi keeps disconnecting in hostel B Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-05-13T22:27:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "complaint: gandagi bahut hai a block bathroom, jam ho gaya thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-05-19T06:34:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: hostel A washroom me pani bhara hua hai, toilet band hai",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-08-05T05:54:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - wifi keeps disconnecting in hostel B Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-04-04T19:34:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Internet down in Hostel D, cannot attend online class It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student24@campus.edu",
+      "created_at": "2026-07-20T11:25:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "urgent: hostel d me nal se pani leak ho raha hai thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-08-18T14:31:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: lab 1 ke computer on nahi ho rahe Thanks.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-07-02T13:42:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: wifi keeps disconnecting in hostel B Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-02-26T02:15:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: The RO water cooler near lab 2F is not working Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-07-21T10:42:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "hostel A washroom me pani bhara hua hai, toilet band hai Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-07-09T15:37:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - hostel B washroom me pani bhara hua hai, toilet band hai It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-07-23T19:31:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "please note: water logging near back gate, please drain it it's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-08-17T19:52:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#3",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Please note: Internet down in Hostel D, cannot attend online class Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-08-25T00:20:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: tubelight fused in the main corridor, very dark It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-09-06T11:03:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#4",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: library ka AC theek se nahi chal raha, garmi bahut hai",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-07-16T14:50:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "FYI - food area dirty, dustbins overflowing in canteen",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-07-26T15:50:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - Library air conditioning is not working, too hot to study Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-07-18T04:46:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: half the systems in lab 1 not booting",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-08-01T05:58:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: Broken benches in Lecture Hall 1, unsafe to sit",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-08-01T04:54:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Complaint: No connectivity in B block wifi again Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-07-28T15:15:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, Hostel B bathroom is clogged and smelling badly Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-08-27T20:29:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - wifi keeps disconnecting in hostel B Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-05-13T05:13:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "hi, several pcs in lab 1 are not turning on",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-07-01T23:25:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: acad block corridor ki light kharab hai",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-07-21T11:14:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "No connectivity in B block wifi again It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-05-13T18:58:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Corridor lights not working in academic block It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student40@campus.edu",
+      "created_at": "2026-06-29T20:48:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, Hostel C has no running water in bathrooms It's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-06-02T09:12:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "please note: reading room ac stopped working again it's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-08-09T16:06:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, Water cooler on Lab Wing 2nd floor not giving cold water Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-06-07T03:52:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, lab 1 ke computer on nahi ho rahe",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-07-01T22:48:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "wifi is not working in b block since morning kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-06-20T00:14:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#4",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Washroom in A block flooded, please clean urgently",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-08-05T00:44:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Ground lights are off, cannot play in the evening",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-08-03T00:00:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: lecture hall 1 ki bench tooti hui hai Please fix soon.",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-09-03T23:07:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Please note: Internet down in Hostel B, cannot attend online class",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-09-03T21:18:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, WiFi is not working in B block since morning",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-09-03T12:41:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: No security guard at the parking lot, bikes unsafe Kindly resolve.",
+      "category_key": "SECURITY",
+      "location_name": "Parking Lot",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-07-24T03:40:00+00:00",
+      "fault_key": "parking_security",
+      "occurrence_id": "parking_security#1",
+      "department_true": "Security"
+    },
+    {
+      "text": "Hi, hostel B washroom me pani bhara hua hai, toilet band hai",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-07-23T15:10:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Smell of gas leak near the canteen kitchen, please check urgently",
+      "category_key": "SECURITY",
+      "location_name": "Central Canteen",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-09-01T01:14:00+00:00",
+      "fault_key": "gasleak_canteen",
+      "occurrence_id": "gasleak_canteen#1",
+      "department_true": "Security"
+    },
+    {
+      "text": "Complaint: Corridor lights not working in academic block Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-07-21T19:00:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: Several PCs in Lab 1 are not turning on It's been days.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-07-31T05:36:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, water logging near back gate, please drain it Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student06@campus.edu",
+      "created_at": "2026-08-17T12:25:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#3",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Urgent: hostel B ka internet band hai please dekho Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-06-21T03:41:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#4",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "urgent: tubelight fused in the main corridor, very dark it's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-09-05T12:13:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#4",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: Water wastage from a broken tap in D block Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-08-18T21:46:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: hostel A washroom me pani bhara hua hai, toilet band hai",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-06-15T03:43:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: Stagnant water collecting near the back gate, mosquito breeding It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student24@campus.edu",
+      "created_at": "2026-06-26T02:42:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Hi, tubelight fused in the main corridor, very dark",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-08-14T13:05:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: Toilet blocked in Hostel A washroom, water everywhere Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student20@campus.edu",
+      "created_at": "2026-08-04T14:18:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#4",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - tubelight fused in the main corridor, very dark Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-08-13T16:29:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "B block me wifi nahi chal raha Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-05-14T02:21:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: Hygiene issue in the central canteen, flies everywhere Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-07-27T12:28:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Water wastage from a broken tap in D block Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-07-16T00:29:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: half the systems in lab 1 not booting It's been days.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-07-30T20:08:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: C block me pani nahi aa raha subah se Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-15T17:05:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - lab 2F ka water cooler kharab hai, pani garam aa raha",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-07-21T19:50:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: food area dirty, dustbins overflowing in canteen It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-07-06T13:49:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "No drinking water from the cooler in lab wing",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-06-29T16:16:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "complaint: hygiene issue in the central canteen, flies everywhere",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-08-17T21:42:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "urgent: d block me wifi nahi chal raha it's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-07-22T04:30:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: Internet down in Hostel D, cannot attend online class It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-08-24T18:29:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "urgent: corridor lights not working in academic block it's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-15T04:52:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: Hygiene issue in the central canteen, flies everywhere It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-07-05T09:22:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - Ground lights are off, cannot play in the evening",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-08-01T15:53:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: acad block corridor ki light kharab hai Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-09-07T03:06:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#4",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "FYI - reading room AC stopped working again",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-07-17T08:43:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: gandagi bahut hai A block bathroom, jam ho gaya",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-07-10T08:40:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Broken benches in Lecture Hall 1, unsafe to sit Thanks.",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-07-30T16:08:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "FYI - water supply band hai hostel C, bahut problem Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-06-27T09:42:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: Library air conditioning is not working, too hot to study Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-09-03T22:13:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: hostel A washroom me pani bhara hua hai, toilet band hai Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-09-01T05:29:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: Internet down in Hostel B, cannot attend online class Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-09-04T11:31:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: Toilet blocked in Hostel A washroom, water everywhere Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-08-30T09:36:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: wifi keeps disconnecting in hostel B Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-07-28T12:22:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, The projector display is blank in hall 1 Thanks.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-09-06T02:13:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: Water cooler on Lab Wing 2nd floor not giving cold water",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-06-28T09:21:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: No water supply in Hostel C since last night",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-06-27T18:58:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: Geyser not working in A block, only cold water Thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-09-06T16:51:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, lab 2F ka water cooler kharab hai, pani garam aa raha It's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-08-13T22:27:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: lecture hall 1 ki bench tooti hui hai Please fix soon.",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-07-31T19:18:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Complaint: C block me pani nahi aa raha subah se Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-07-22T07:23:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "hi, projector not working in lecture hall 1 it's been days.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student11@campus.edu",
+      "created_at": "2026-09-06T01:19:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "library ka AC theek se nahi chal raha, garmi bahut hai Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-07-17T06:51:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "cooler pe pani nahi aa raha 2nd floor lab Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-09-07T00:54:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Canteen tables are dirty and not cleaned Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student32@campus.edu",
+      "created_at": "2026-07-05T12:30:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "please note: library ka ac theek se nahi chal raha, garmi bahut hai thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-07-16T15:43:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: Several PCs in Lab 1 are not turning on Please fix soon.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-08-28T18:16:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "please note: lab 1 ke computer on nahi ho rahe thanks.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-08-30T01:20:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: Ceiling fan stopped in Hostel B room 210 Thanks.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 210 Hostel B",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-07-20T08:58:00+00:00",
+      "fault_key": "hostelB_fan_r210",
+      "occurrence_id": "hostelB_fan_r210#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "urgent: academic block corridor is completely dark at night",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-06-30T01:13:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: library ka AC theek se nahi chal raha, garmi bahut hai Please fix soon.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-07-17T18:32:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: Toilet blocked in Hostel A washroom, water everywhere",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-07-11T05:49:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: Internet down in Hostel B, cannot attend online class Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-09-04T09:00:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#6",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "please note: lab 2f ka water cooler kharab hai, pani garam aa raha please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-09-05T23:51:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: Washroom in A block flooded, please clean urgently Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-08-31T03:06:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - hostel B washroom me pani bhara hua hai, toilet band hai It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-07-23T15:16:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - C block me pani nahi aa raha subah se",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-08-15T09:36:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: Internet down in Hostel B, cannot attend online class",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-05-13T01:08:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "FYI - Geyser not working in A block, only cold water Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student28@campus.edu",
+      "created_at": "2026-09-07T13:02:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - library ka AC theek se nahi chal raha, garmi bahut hai It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Library",
+      "reporter_email": "student10@campus.edu",
+      "created_at": "2026-08-11T03:47:00+00:00",
+      "fault_key": "library_ac",
+      "occurrence_id": "library_ac#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: Geyser not working in A block, only cold water",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-08-02T13:22:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "WiFi is not working in B block since morning Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-02-25T14:24:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: water supply band hai hostel C, bahut problem",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student31@campus.edu",
+      "created_at": "2026-06-26T23:54:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "complaint: water supply band hai hostel c, bahut problem thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-08-16T04:12:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: acad block corridor ki light kharab hai",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-08-13T10:05:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: Computers in Lab 1 keep crashing during practical It's been days.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student29@campus.edu",
+      "created_at": "2026-08-30T01:31:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, hostel A washroom me pani bhara hua hai, toilet band hai Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student04@campus.edu",
+      "created_at": "2026-08-30T09:45:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - Hygiene issue in the central canteen, flies everywhere",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-07-07T00:02:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: Academic block corridor is completely dark at night Kindly resolve.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student37@campus.edu",
+      "created_at": "2026-07-21T13:03:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, hostel B ka internet band hai please dekho Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student01@campus.edu",
+      "created_at": "2026-02-25T23:28:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, tubelight fused in the main corridor, very dark",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-06-29T04:36:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Hi, Hostel C has no running water in bathrooms Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-07-22T16:58:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: hostel B washroom me pani bhara hua hai, toilet band hai",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel B",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-08-27T22:35:00+00:00",
+      "fault_key": "washroom_hostelB_clog",
+      "occurrence_id": "washroom_hostelB_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "FYI - lab 2F ka water cooler kharab hai, pani garam aa raha Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-08-14T12:04:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: Toilet blocked in Hostel A washroom, water everywhere Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-06-15T02:27:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: The RO water cooler near lab 2F is not working Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-06-07T03:41:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, Canteen tables are dirty and not cleaned Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-07-27T22:35:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Hi, Water cooler on Lab Wing 2nd floor not giving cold water",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-06-05T20:04:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: Hostel C has no running water in bathrooms It's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student28@campus.edu",
+      "created_at": "2026-07-21T13:28:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, sports ground ki light band hai shaam ko It's been days.",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-08-31T08:04:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: Computers in Lab 1 keep crashing during practical Kindly resolve.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student01@campus.edu",
+      "created_at": "2026-07-01T17:48:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Hygiene issue in the central canteen, flies everywhere Please fix soon.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student23@campus.edu",
+      "created_at": "2026-08-16T18:42:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: Internet down in Hostel D, cannot attend online class Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-08-24T06:35:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Please note: hostel D me nal se pani leak ho raha hai Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student07@campus.edu",
+      "created_at": "2026-07-16T07:25:00+00:00",
+      "fault_key": "leaking_tap_hostelD",
+      "occurrence_id": "leaking_tap_hostelD#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - C block me pani nahi aa raha subah se Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student38@campus.edu",
+      "created_at": "2026-06-01T09:18:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "FYI - Hostel C has no running water in bathrooms",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-08-17T00:16:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: wifi keeps disconnecting in hostel B It's been days.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-04-06T00:56:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "WiFi is not working in D block since morning",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-07-21T22:22:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Urgent: Corridor lights not working in academic block",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student13@campus.edu",
+      "created_at": "2026-07-23T04:14:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#2",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "urgent: fan not working in room 210",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 210 Hostel B",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-06-17T13:06:00+00:00",
+      "fault_key": "hostelB_fan_r210",
+      "occurrence_id": "hostelB_fan_r210#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Urgent: No drinking water from the cooler in lab wing Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-09-06T20:38:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "fyi - c block me pani nahi aa raha subah se kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student26@campus.edu",
+      "created_at": "2026-08-16T21:18:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "complaint: cooler pe pani nahi aa raha 2nd floor lab it's been days.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student05@campus.edu",
+      "created_at": "2026-06-29T20:45:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Toilet blocked in Hostel A washroom, water everywhere It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-06-14T00:12:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: tubelight fused in the main corridor, very dark",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student27@campus.edu",
+      "created_at": "2026-08-15T01:52:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "hi, fan not working in room 210",
+      "category_key": "ELECTRICAL",
+      "location_name": "Room 210 Hostel B",
+      "reporter_email": "student23@campus.edu",
+      "created_at": "2026-08-22T06:05:00+00:00",
+      "fault_key": "hostelB_fan_r210",
+      "occurrence_id": "hostelB_fan_r210#3",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: sports ground ki light band hai shaam ko",
+      "category_key": "ELECTRICAL",
+      "location_name": "Sports Ground",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-08-02T23:33:00+00:00",
+      "fault_key": "ground_floodlight",
+      "occurrence_id": "ground_floodlight#1",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Complaint: Water cooler on Lab Wing 2nd floor not giving cold water Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-07-21T15:38:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: Stagnant water collecting near the back gate, mosquito breeding Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student33@campus.edu",
+      "created_at": "2026-08-18T03:05:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#3",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "urgent: no hot water in hostel a geyser in the morning please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student13@campus.edu",
+      "created_at": "2026-08-03T14:02:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, No security guard at the parking lot, bikes unsafe",
+      "category_key": "SECURITY",
+      "location_name": "Parking Lot",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-07-22T18:54:00+00:00",
+      "fault_key": "parking_security",
+      "occurrence_id": "parking_security#1",
+      "department_true": "Security"
+    },
+    {
+      "text": "Hi, Several PCs in Lab 1 are not turning on Thanks.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-08-30T00:38:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "tubelight fused in the main corridor, very dark",
+      "category_key": "ELECTRICAL",
+      "location_name": "Academic Block Corridor",
+      "reporter_email": "student39@campus.edu",
+      "created_at": "2026-09-07T05:31:00+00:00",
+      "fault_key": "corridor_light_acad",
+      "occurrence_id": "corridor_light_acad#4",
+      "department_true": "Electrical Maintenance"
+    },
+    {
+      "text": "Please note: water supply band hai hostel C, bahut problem It's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student15@campus.edu",
+      "created_at": "2026-08-16T03:49:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#4",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: No drinking water from the cooler in lab wing Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student17@campus.edu",
+      "created_at": "2026-06-28T22:45:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "complaint: lecture hall 1 ki bench tooti hui hai it's been days.",
+      "category_key": "FURNITURE",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student21@campus.edu",
+      "created_at": "2026-09-04T11:49:00+00:00",
+      "fault_key": "classroom_bench",
+      "occurrence_id": "classroom_bench#2",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Complaint: Hostel C has no running water in bathrooms Kindly resolve.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-06-27T13:34:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: Internet down in Hostel B, cannot attend online class Kindly resolve.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-02-27T05:27:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "internet down in hostel d, cannot attend online class",
+      "category_key": "INTERNET",
+      "location_name": "Hostel D Block",
+      "reporter_email": "student22@campus.edu",
+      "created_at": "2026-08-24T17:02:00+00:00",
+      "fault_key": "wifi_hostelD",
+      "occurrence_id": "wifi_hostelD#2",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: C block me pani nahi aa raha subah se Thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student36@campus.edu",
+      "created_at": "2026-06-02T11:53:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: gandagi bahut hai A block bathroom, jam ho gaya Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student25@campus.edu",
+      "created_at": "2026-06-14T05:13:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Please note: Dirty water logged at back gate for days, dengue risk Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student02@campus.edu",
+      "created_at": "2026-08-18T12:05:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#3",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "complaint: canteen me safai nahi hoti, ganda rehta hai",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student06@campus.edu",
+      "created_at": "2026-07-26T18:43:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#2",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "wifi keeps disconnecting in hostel B Thanks.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student30@campus.edu",
+      "created_at": "2026-05-13T12:38:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: hostel A washroom me pani bhara hua hai, toilet band hai Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-05-19T04:48:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "please note: several pcs in lab 1 are not turning on it's been days.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lab 1",
+      "reporter_email": "student06@campus.edu",
+      "created_at": "2026-07-01T12:09:00+00:00",
+      "fault_key": "lab1_pc",
+      "occurrence_id": "lab1_pc#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "gandagi bahut hai A block bathroom, jam ho gaya It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student01@campus.edu",
+      "created_at": "2026-05-19T22:44:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#1",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "No connectivity in B block wifi again",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-05-13T01:35:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#3",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: Geyser not working in A block, only cold water",
+      "category_key": "WATER",
+      "location_name": "Hostel A Block",
+      "reporter_email": "student12@campus.edu",
+      "created_at": "2026-09-06T14:46:00+00:00",
+      "fault_key": "hostelA_hot_water",
+      "occurrence_id": "hostelA_hot_water#2",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Complaint: Hostel A bathroom is clogged and smelling badly Kindly resolve.",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-08-30T22:47:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#5",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Urgent: Projector not working in Lecture Hall 1 Please fix soon.",
+      "category_key": "EQUIPMENT",
+      "location_name": "Lecture Hall 1",
+      "reporter_email": "student15@campus.edu",
+      "created_at": "2026-07-29T18:09:00+00:00",
+      "fault_key": "projector_hall1",
+      "occurrence_id": "projector_hall1#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Hi, cooler pe pani nahi aa raha 2nd floor lab Please fix soon.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student03@campus.edu",
+      "created_at": "2026-06-05T16:56:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "No connectivity in B block wifi again",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student15@campus.edu",
+      "created_at": "2026-07-27T23:00:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#5",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "hi, c block me pani nahi aa raha subah se thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student08@campus.edu",
+      "created_at": "2026-06-02T20:00:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hostel C has no running water in bathrooms It's been days.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student40@campus.edu",
+      "created_at": "2026-07-21T19:11:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Please note: water supply band hai hostel C, bahut problem Thanks.",
+      "category_key": "WATER",
+      "location_name": "Hostel C Block",
+      "reporter_email": "student19@campus.edu",
+      "created_at": "2026-06-01T16:41:00+00:00",
+      "fault_key": "hostelC_water_supply",
+      "occurrence_id": "hostelC_water_supply#1",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, gandagi bahut hai A block bathroom, jam ho gaya",
+      "category_key": "SANITATION",
+      "location_name": "Men's Washroom Hostel A",
+      "reporter_email": "student16@campus.edu",
+      "created_at": "2026-07-09T21:04:00+00:00",
+      "fault_key": "washroom_hostelA_clog",
+      "occurrence_id": "washroom_hostelA_clog#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Dirty water logged at back gate for days, dengue risk It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-06-24T13:18:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Urgent: back gate pe pani jama hai, machar bahut ho gaye Thanks.",
+      "category_key": "SANITATION",
+      "location_name": "Back Gate",
+      "reporter_email": "student09@campus.edu",
+      "created_at": "2026-06-24T20:13:00+00:00",
+      "fault_key": "stagnant_water_backgate",
+      "occurrence_id": "stagnant_water_backgate#1",
+      "department_true": "Civil Maintenance"
+    },
+    {
+      "text": "Urgent: canteen me safai nahi hoti, ganda rehta hai It's been days.",
+      "category_key": "SANITATION",
+      "location_name": "Central Canteen",
+      "reporter_email": "student28@campus.edu",
+      "created_at": "2026-08-16T16:48:00+00:00",
+      "fault_key": "canteen_hygiene",
+      "occurrence_id": "canteen_hygiene#3",
+      "department_true": "Housekeeping"
+    },
+    {
+      "text": "Complaint: The RO water cooler near lab 2F is not working Thanks.",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student01@campus.edu",
+      "created_at": "2026-09-07T05:24:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#5",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Urgent: parking me koi guard nahi hai, suraksha ka issue Thanks.",
+      "category_key": "SECURITY",
+      "location_name": "Parking Lot",
+      "reporter_email": "student18@campus.edu",
+      "created_at": "2026-08-17T17:33:00+00:00",
+      "fault_key": "parking_security",
+      "occurrence_id": "parking_security#2",
+      "department_true": "Security"
+    },
+    {
+      "text": "Hi, No connectivity in B block wifi again Please fix soon.",
+      "category_key": "INTERNET",
+      "location_name": "Hostel B Block",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-02-26T23:01:00+00:00",
+      "fault_key": "wifi_hostelB",
+      "occurrence_id": "wifi_hostelB#1",
+      "department_true": "IT & Network"
+    },
+    {
+      "text": "Complaint: lab 2F ka water cooler kharab hai, pani garam aa raha",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student35@campus.edu",
+      "created_at": "2026-07-21T11:45:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#3",
+      "department_true": "Water & Plumbing"
+    },
+    {
+      "text": "Hi, lab 2F ka water cooler kharab hai, pani garam aa raha",
+      "category_key": "WATER",
+      "location_name": "Lab Wing 2F",
+      "reporter_email": "student34@campus.edu",
+      "created_at": "2026-06-05T19:28:00+00:00",
+      "fault_key": "water_cooler_lab2f",
+      "occurrence_id": "water_cooler_lab2f#1",
+      "department_true": "Water & Plumbing"
+    }
+  ]
+}
