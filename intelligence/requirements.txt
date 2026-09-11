@@ -1,0 +1,6 @@
+# Intelligence service — embeddings, clustering (candidate-retrieval matcher), scoring.
+# Pretrained embeddings only (no training). Runs fully offline once the model is cached.
+sentence-transformers>=2.7
+faiss-cpu>=1.8
+numpy>=1.26
+psycopg2-binary>=2.9
