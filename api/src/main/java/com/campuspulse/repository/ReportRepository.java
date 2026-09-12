@@ -7,9 +7,6 @@ import java.util.List;
 
 public interface ReportRepository extends JpaRepository<Report, Long> {
 
-    /** Newest first — the natural order for a reports feed. */
-    List<Report> findAllByOrderByCreatedAtDesc();
-
-    /** A single student's own reports, newest first. */
+    /** A caller's own reports, newest first — the only reports feed exposed by the API. */
     List<Report> findByReporterIdOrderByCreatedAtDesc(Long reporterId);
 }

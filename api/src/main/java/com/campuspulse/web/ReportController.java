@@ -56,16 +56,19 @@ public class ReportController {
     }
 
     /**
-     * A STUDENT sees only their own reports (the student app's "my reports" list);
-     * DEPARTMENT/ADMIN see the full feed.
+     * Returns ONLY the authenticated caller's own reports — for EVERY role. This endpoint
+     * backs the student app's "my reports" list. It must never return another user's report:
+     * ReportResponse carries reporterId, so an unscoped feed here would leak reporter identity
+     * to department/admin callers, bypassing the console's identity-hiding. Department and
+     * admin users work through /cases (which never selects reporter columns) and the pattern
+     * dashboard — not this feed. A non-student calling this simply gets their own (usually
+     * empty) list.
      */
     @GetMapping
     public List<ReportResponse> list(Authentication auth) {
         AppUser me = users.findByEmail(auth.getName())
                 .orElseThrow(() -> new IllegalStateException("Authenticated user not found"));
-        List<Report> rows = "STUDENT".equals(me.getRole())
-                ? reports.findByReporterIdOrderByCreatedAtDesc(me.getId())
-                : reports.findAllByOrderByCreatedAtDesc();
-        return rows.stream().map(ReportResponse::from).toList();
+        return reports.findByReporterIdOrderByCreatedAtDesc(me.getId())
+                .stream().map(ReportResponse::from).toList();
     }
 }
