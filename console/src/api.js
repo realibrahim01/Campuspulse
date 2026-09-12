@@ -19,10 +19,16 @@ export function isAuthed() {
 
 async function req(path, opts = {}) {
   const auth = sessionStorage.getItem('cp_auth');
-  const res = await fetch(BASE + path, {
-    ...opts,
-    headers: { 'Content-Type': 'application/json', Authorization: auth, ...(opts.headers || {}) },
-  });
+  let res;
+  try {
+    res = await fetch(BASE + path, {
+      ...opts,
+      headers: { 'Content-Type': 'application/json', Authorization: auth, ...(opts.headers || {}) },
+    });
+  } catch {
+    // Network-level failure (server down, wrong port, CORS) — make it legible, not "Failed to fetch".
+    throw new Error(`Can't reach the API at ${BASE}. Is it running?`);
+  }
   if (res.status === 401) {
     clearAuth();
     throw new Error('Unauthorized');

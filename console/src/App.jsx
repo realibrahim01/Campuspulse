@@ -14,8 +14,20 @@ export default function App() {
 
   const refreshQueue = useCallback(() => setQueueVersion((v) => v + 1), []);
 
+  // Fetch identity (drives the admin-only Patterns tab). Retry on failure: under stack_up
+  // the console can load before the API has finished starting, and a silently-swallowed
+  // /me failure would leave an admin without the Patterns tab and no clue why.
   useEffect(() => {
-    if (authed) api.me().then(setMe).catch(() => {});
+    if (!authed) return;
+    let cancelled = false;
+    let attempts = 0;
+    const tryMe = () => {
+      api.me()
+        .then((m) => { if (!cancelled) setMe(m); })
+        .catch(() => { if (!cancelled && attempts++ < 6) setTimeout(tryMe, 1500); });
+    };
+    tryMe();
+    return () => { cancelled = true; };
   }, [authed]);
 
   if (!authed) {
@@ -28,7 +40,7 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="topbar-left">
-          <strong>CampusPulse</strong> <span className="muted">Console</span>
+          <span className="brand"><strong>CampusPulse</strong> <span className="brand-sub">Console</span></span>
           <nav className="nav">
             <button className={'tab' + (view === 'queue' ? ' active' : '')}
               onClick={() => setView('queue')}>Queue</button>

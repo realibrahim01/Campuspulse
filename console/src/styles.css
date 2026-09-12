@@ -33,8 +33,11 @@ button { cursor: pointer; }
 /* shell */
 .topbar { display: flex; justify-content: space-between; align-items: center;
   padding: 10px 16px; background: var(--panel); border-bottom: 1px solid var(--line); }
-.topbar-left { display: flex; align-items: center; gap: 18px; }
-.nav { display: flex; gap: 4px; }
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+/* "CampusPulse Console" is a brand label, not a tab — non-interactive, and divided from the tabs. */
+.brand { cursor: default; user-select: none; }
+.brand-sub { color: var(--muted); font-weight: 400; font-size: 13px; }
+.nav { display: flex; gap: 4px; border-left: 1px solid var(--line); padding-left: 16px; }
 .tab { background: none; border: none; padding: 6px 12px; border-radius: 6px;
   color: var(--muted); font-weight: 600; font-size: 13px; }
 .tab.active { background: #eef2ff; color: var(--accent); }
@@ -86,7 +89,8 @@ button { cursor: pointer; }
 .breakdown { width: 100%; border-collapse: collapse; margin-top: 8px; }
 .breakdown th { text-align: left; font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line); padding: 6px 8px; }
 .breakdown td { padding: 6px 8px; border-bottom: 1px solid var(--line); }
-.breakdown .num { text-align: right; font-variant-numeric: tabular-nums; }
+/* numeric columns: right-aligned header + data, lining figures so +27 and +13 share a width */
+.breakdown th.num, .breakdown td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .breakdown .strong { font-weight: 700; }
 .total-row td { border-top: 2px solid var(--line); border-bottom: none; font-weight: 700; }
 

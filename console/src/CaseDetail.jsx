@@ -16,13 +16,14 @@ export default function CaseDetail({ id, onChanged }) {
   const [error, setError] = useState('');
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
+  const [deptError, setDeptError] = useState(false);
 
   function load() {
     setError('');
     api.case(id).then(setC).catch((e) => setError(e.message));
   }
   useEffect(() => { load(); setNote(''); }, [id]);
-  useEffect(() => { api.departments().then(setDepts).catch(() => {}); }, []);
+  useEffect(() => { api.departments().then(setDepts).catch(() => setDeptError(true)); }, []);
 
   async function changeStatus(status) {
     setBusy(true);
@@ -61,7 +62,7 @@ export default function CaseDetail({ id, onChanged }) {
       <h3>Why this score</h3>
       <table className="breakdown">
         <thead>
-          <tr><th>Factor</th><th>Contribution</th><th>Normalized</th><th>Weight</th></tr>
+          <tr><th>Factor</th><th className="num">Contribution</th><th className="num">Normalized</th><th className="num">Weight</th></tr>
         </thead>
         <tbody>
           {c.components.map((k) => (
@@ -95,10 +96,14 @@ export default function CaseDetail({ id, onChanged }) {
         </div>
         <div className="control">
           <label>Reassign to</label>
-          <select value="" onChange={(e) => reassign(e.target.value)} disabled={busy}>
-            <option value="">choose department…</option>
-            {depts.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
-          </select>
+          {deptError ? (
+            <span className="error">Couldn't load departments — reassign unavailable.</span>
+          ) : (
+            <select value="" onChange={(e) => reassign(e.target.value)} disabled={busy}>
+              <option value="">choose department…</option>
+              {depts.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </select>
+          )}
         </div>
       </div>
 
