@@ -23,10 +23,16 @@ export function setCreds(e, p) { email = e; auth = 'Basic ' + b64(e + ':' + p); 
 export function getEmail() { return email; }
 
 async function req(path, opts = {}) {
-  const res = await fetch(BASE + path, {
-    ...opts,
-    headers: { 'Content-Type': 'application/json', Authorization: auth, ...(opts.headers || {}) },
-  });
+  let res;
+  try {
+    res = await fetch(BASE + path, {
+      ...opts,
+      headers: { 'Content-Type': 'application/json', Authorization: auth, ...(opts.headers || {}) },
+    });
+  } catch {
+    // Network-level failure (server down / wrong host) — legible message, not "Network request failed".
+    throw new Error(`Can't reach the server at ${BASE}. Is it running?`);
+  }
   if (res.status === 401) throw new Error('Unauthorized');
   if (!res.ok) throw new Error('HTTP ' + res.status);
   const t = await res.text();
@@ -34,6 +40,7 @@ async function req(path, opts = {}) {
 }
 
 export const api = {
+  me: () => req('/me'),
   categories: () => req('/categories'),
   locations: () => req('/locations'),
   myReports: () => req('/reports'),

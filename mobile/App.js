@@ -55,11 +55,20 @@ function Home({ onSignOut }) {
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [role, setRole] = useState(null);
+  const [loadError, setLoadError] = useState('');
 
   React.useEffect(() => {
-    Promise.all([api.categories(), api.locations(), api.myReports()])
-      .then(([c, l, r]) => { setCats(c); setLocs(l); setReports(r); setLoaded(true); })
-      .catch((e) => setMsg('Load failed: ' + e.message));
+    // Fetch identity first: the report form is student-only, so we only load the form
+    // data (categories/locations/my reports) once we know the caller is a STUDENT.
+    api.me()
+      .then((m) => {
+        setRole(m.role);
+        if (m.role !== 'STUDENT') return null;
+        return Promise.all([api.categories(), api.locations(), api.myReports()])
+          .then(([c, l, r]) => { setCats(c); setLocs(l); setReports(r); setLoaded(true); });
+      })
+      .catch((e) => setLoadError(e.message));
   }, []);
 
   async function submit() {
@@ -75,6 +84,44 @@ function Home({ onSignOut }) {
       setMsg('Reported. Thank you — you will be notified as it progresses.');
     } catch (e) { setMsg('Submit failed: ' + e.message); }
     finally { setBusy(false); }
+  }
+
+  // If the initial load failed (e.g. the API is down), say so instead of spinning forever.
+  if (loadError) {
+    return (
+      <SafeAreaView style={s.screen}>
+        <StatusBar barStyle="dark-content" />
+        <View style={s.topbar}>
+          <Text style={s.brandSm}>CampusPulse</Text>
+          <TouchableOpacity onPress={onSignOut}><Text style={s.link}>{getEmail()} · sign out</Text></TouchableOpacity>
+        </View>
+        <View style={s.guard}>
+          <Text style={s.guardTitle}>Can't reach CampusPulse</Text>
+          <Text style={s.muted}>{loadError}</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // Role guard: the report form must not render for non-students, even though the API
+  // already 403s a non-student POST. Show a message instead.
+  if (role && role !== 'STUDENT') {
+    return (
+      <SafeAreaView style={s.screen}>
+        <StatusBar barStyle="dark-content" />
+        <View style={s.topbar}>
+          <Text style={s.brandSm}>CampusPulse</Text>
+          <TouchableOpacity onPress={onSignOut}><Text style={s.link}>{getEmail()} · sign out</Text></TouchableOpacity>
+        </View>
+        <View style={s.guard}>
+          <Text style={s.guardTitle}>This app is for students</Text>
+          <Text style={s.muted}>
+            You're signed in as {role.toLowerCase()}. Reporting is student-only — department and
+            admin users work in the console at localhost:5173.
+          </Text>
+        </View>
+      </SafeAreaView>
+    );
   }
 
   if (!loaded) {
@@ -159,4 +206,7 @@ const s = StyleSheet.create({
   reportCard: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#e2e5ea', borderRadius: 8,
     padding: 12, marginTop: 10 },
   reportText: { fontSize: 14, marginBottom: 4, color: '#1f2430' },
+  guard: { margin: 20, marginTop: 40, backgroundColor: '#fff', borderWidth: 1,
+    borderColor: '#e2e5ea', borderRadius: 12, padding: 24 },
+  guardTitle: { fontSize: 18, fontWeight: '700', color: '#1f2430', marginBottom: 8 },
 });
