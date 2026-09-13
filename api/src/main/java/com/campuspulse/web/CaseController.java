@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,10 +27,16 @@ public class CaseController {
         this.cases = cases;
     }
 
-    /** Prioritized queue (this department's cases, or all for admin). */
+    /**
+     * Prioritized queue of OPEN cases (this department's, or all for admin).
+     * {@code ?resolved=true} returns the RESOLVED/CLOSED list instead, most recently resolved
+     * first — same endpoint, same department scoping, just a status filter.
+     */
     @GetMapping
-    public List<CaseDtos.Summary> queue(Authentication auth) {
-        return cases.queue(auth.getName());
+    public List<CaseDtos.Summary> queue(
+            @RequestParam(name = "resolved", defaultValue = "false") boolean resolved,
+            Authentication auth) {
+        return cases.queue(auth.getName(), resolved);
     }
 
     /** Full case detail: scoring breakdown + explanation + reports (no reporter identity). */

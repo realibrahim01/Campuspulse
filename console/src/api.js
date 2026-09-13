@@ -41,7 +41,8 @@ async function req(path, opts = {}) {
 export const api = {
   me: () => req('/me'),
   patterns: () => req('/admin/patterns'),
-  cases: () => req('/cases'),
+  // resolved=false -> open queue; resolved=true -> RESOLVED/CLOSED list (same endpoint).
+  cases: (resolved = false) => req('/cases' + (resolved ? '?resolved=true' : '')),
   case: (id) => req('/cases/' + id),
   departments: () => req('/departments'),
   setStatus: (id, status, note) =>

@@ -44,6 +44,8 @@ export default function App() {
           <nav className="nav">
             <button className={'tab' + (view === 'queue' ? ' active' : '')}
               onClick={() => setView('queue')}>Queue</button>
+            <button className={'tab' + (view === 'resolved' ? ' active' : '')}
+              onClick={() => setView('resolved')}>Resolved</button>
             {isAdmin && (
               <button className={'tab' + (view === 'patterns' ? ' active' : '')}
                 onClick={() => setView('patterns')}>Patterns</button>
@@ -62,12 +64,19 @@ export default function App() {
         <Patterns />
       ) : (
         <div className="layout">
-          <Queue version={queueVersion} selectedId={selectedId} onSelect={setSelectedId} />
+          <Queue
+            mode={view === 'resolved' ? 'resolved' : 'open'}
+            version={queueVersion}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+          />
           <main className="detail-pane">
             {selectedId ? (
               <CaseDetail id={selectedId} onChanged={refreshQueue} />
             ) : (
-              <div className="empty">Select a case from the queue.</div>
+              <div className="empty">
+                Select a case from the {view === 'resolved' ? 'list' : 'queue'}.
+              </div>
             )}
           </main>
         </div>

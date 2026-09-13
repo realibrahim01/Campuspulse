@@ -21,6 +21,7 @@ public final class CaseDtos {
             String department,
             int occurrenceSeq,
             OffsetDateTime slaDueAt,
+            OffsetDateTime resolvedAt,   // null while the case is open
             String explanation           // student-facing sentence (no +pts)
     ) {}
 

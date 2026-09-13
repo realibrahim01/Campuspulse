@@ -41,7 +41,7 @@ public class CaseService {
     private static final String QUEUE_SELECT = """
         SELECT c.id, c.title, cat.label AS category, l.name AS location,
                c.priority_score, c.status, dep.name AS department,
-               c.occurrence_seq, c.sla_due_at, sr.explanation_text
+               c.occurrence_seq, c.sla_due_at, c.resolved_at, sr.explanation_text
         FROM cases c
         JOIN categories cat ON cat.id = c.category_id
         JOIN locations  l   ON l.id   = c.location_id
@@ -49,14 +49,26 @@ public class CaseService {
         LEFT JOIN scoring_records sr ON sr.id  = c.current_scoring_record_id
         """;
 
-    public List<CaseDtos.Summary> queue(String email) {
+    // "Open" means the same thing here as in the pattern dashboard: not resolved, not closed.
+    private static final String OPEN_FILTER     = " WHERE c.status NOT IN ('RESOLVED','CLOSED')";
+    private static final String RESOLVED_FILTER = " WHERE c.status IN ('RESOLVED','CLOSED')";
+    private static final String OPEN_ORDER      = " ORDER BY c.priority_score DESC NULLS LAST, c.id";
+    private static final String RESOLVED_ORDER  = " ORDER BY c.resolved_at DESC NULLS LAST, c.id DESC";
+
+    /**
+     * The prioritized queue (open cases only) or the resolved list — same row shape and the
+     * same department scoping. Resolved/closed cases drop out of the queue so it shows only
+     * work still to do.
+     */
+    public List<CaseDtos.Summary> queue(String email, boolean resolved) {
         AppUser u = me(email);
-        String order = " ORDER BY c.priority_score DESC NULLS LAST, c.id";
+        String filter = resolved ? RESOLVED_FILTER : OPEN_FILTER;
+        String order  = resolved ? RESOLVED_ORDER : OPEN_ORDER;
         if ("ADMIN".equals(u.getRole())) {
-            return jdbc.query(QUEUE_SELECT + order, this::mapSummary);
+            return jdbc.query(QUEUE_SELECT + filter + order, this::mapSummary);
         }
-        // DEPARTMENT: only this department's cases.
-        return jdbc.query(QUEUE_SELECT + " WHERE c.department_id = ?" + order,
+        // DEPARTMENT: only this department's cases — applies to the resolved list too.
+        return jdbc.query(QUEUE_SELECT + filter + " AND c.department_id = ?" + order,
                 this::mapSummary, u.getDepartmentId());
     }
 
@@ -67,6 +79,7 @@ public class CaseService {
                 rs.getString("status"), rs.getString("department"),
                 rs.getInt("occurrence_seq"),
                 rs.getObject("sla_due_at", OffsetDateTime.class),
+                rs.getObject("resolved_at", OffsetDateTime.class),
                 rs.getString("explanation_text"));
     }
 
