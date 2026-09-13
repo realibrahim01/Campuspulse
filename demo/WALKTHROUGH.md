@@ -12,7 +12,9 @@ cd C:\Users\ibrah\CampusPulse
 # wait ~30s for Expo to bundle, then:
 .\demo\routing_fix_demo.ps1 -Reset     # routing rests at the 93.7% baseline
 ```
-Baseline state: 64 cases · 333 reports · 332 provenance · routing 93.7%.
+Baseline state — check the two things that are actually stable: routing **93.7%**, and case
+**51** = `SANITATION @ Men's Washroom Hostel A`, priority **84**. (Case and report counts rise
+by one every time someone submits through the app, so don't treat those as fixed numbers.)
 (If data was rebuilt from scratch, run `.\demo\rescore.ps1` before the `-Reset`.)
 
 ---
@@ -57,18 +59,34 @@ That's why every explanation is defensible."
 ### ▶ 5-MINUTE CUT ENDS HERE (segments 1–3). Below is the full demo.
 ---
 
-## 4. A fresh report scores ~0 on age (dynamic range)
+## 4. OPTIONAL — live submission: a fresh report scores ~0 on age
+**Only run this if you're tracking under 5:30.** It comes after the routing demo and is the
+one droppable beat — the admin dashboard below is the sixth feature and is NOT optional.
+
 **Click:** open `http://localhost:8081` → sign in `student01@campus.edu` / `campus123` →
 "What's wrong?" = *"Water leaking under the sink in Lab 1"* · Category **Water supply** ·
 Location **Lab 1** → **Submit report** (shows "awaiting triage").
-**Run** (clusters + scores it, ~40s):
+**Run** — the full five-step rebuild, **~15 seconds measured**. Run all five: skipping steps
+leaves every case with a blank department and empties the Patterns view.
 ```powershell
 .\demo\rescore.ps1
 & 'C:\Program Files\PostgreSQL\18\bin\psql.exe' -U postgres -h localhost -d campuspulse -c "SELECT sc.input_name, sc.contribution FROM cases c JOIN scoring_components sc ON sc.scoring_record_id=c.current_scoring_record_id WHERE c.id=(SELECT max(id) FROM cases) ORDER BY sc.contribution DESC;"
 ```
-**Say:** "Scored moments after it opened, so age-vs-SLA contributes ~0 — unlike the historical
-backlog where everything is long overdue and maxed at +20. The component discriminates by
-freshness; the synthetic backlog just can't show that on its own."
+
+**DON'T IMPROVISE INTO SILENCE — say these two while it runs (~15s of cover):**
+
+> **(1) Nothing cached.** "What's running is a full rebuild — every report re-embedded and
+> re-scored from scratch, nothing cached."
+
+> **(2) Batch by design.** "And clustering is a batch job on purpose. A report isn't merged the
+> instant it lands — it's compared against the case centroids in one deterministic pass, so the
+> same inputs always produce the same merge, and we can re-run it later and audit why any two
+> reports were grouped together. That's the trade: a few seconds of latency for a decision we
+> can defend."
+
+**Say (on the result):** "Scored moments after it opened, so age-vs-SLA contributes ~0 — unlike
+the historical backlog where everything is long overdue and maxed at +20. The component
+discriminates by freshness; the synthetic backlog just can't show that on its own."
 **Shows:** `age_vs_sla ≈ 0` on the newest case. (rescore re-routes to baseline and re-acks.)
 
 ## 5. We can't cheat the metrics — the provenance gap
@@ -76,11 +94,13 @@ freshness; the synthetic backlog just can't show that on its own."
 ```powershell
 & 'C:\Program Files\PostgreSQL\18\bin\psql.exe' -U postgres -h localhost -d campuspulse -c "SELECT (SELECT count(*) FROM reports) reports, (SELECT count(*) FROM report_provenance) provenance;"
 ```
-**Say:** "333 reports, 332 provenance rows — the gap is exactly the real, app-submitted
-reports. Ground-truth labels (which fault, which department) live only in the provenance
-table, and the pipeline never joins it. So clustering 96% and routing 93.7% are measured
-against an answer key the system physically cannot read." (After a live submit in step 4
-it's 334/332 — the gap grows by each real report.)
+**Say** (read the two numbers off the screen — don't memorise them): "Reports outnumber
+provenance rows by exactly the number of app-submitted reports. Every seeded report has a
+ground-truth row; every real one submitted through the app has none — so the gap grows by one
+each time someone actually reports something. Ground-truth labels (which fault, which
+department) live only in the provenance table, and the pipeline never joins it. So clustering
+at 96% and routing at 93.7% are measured against an answer key the system physically cannot
+read."
 **Shows:** methodological honesty.
 
 ---
